@@ -112,11 +112,11 @@ print(bool3)
 // The && operator has a higher precedence over the || operator.
 // Parentheses, (), may be used in a logical expression to control the order of operations and improve readability.
 
+//Magic 8-Ball
 let playerName: String = "David"
 let playerQuestion: String = "To smoke or not to smoke"
 let randomNumber: Int = Int.random(in: 1...9)
 let eightBall: String 
-
 switch randomNumber {
     case 1:
         eightBall = "Yes - definitely"

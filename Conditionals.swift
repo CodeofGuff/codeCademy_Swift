@@ -181,7 +181,7 @@ switch wholeNumber {
 
 
 
-
+// Review
 // An if statement consists of a condition and code block that executes when the condition is true
 // An else statement is immediately followed by a code block that executes when all previous conditions were false
 // A code block is denoted by a set of curly braces {}
