@@ -145,3 +145,31 @@ var magicNum = Int.random(in: 1...10)
 // while loops are used when we don’t know how many times we’re looping.
 
 // Whale Talk 
+var input: String = "I hope I make it!"
+var output: String = ""
+
+for char: Character in input {
+  let lowerChar: String = char.lowercased()
+  switch lowerChar {
+    case "a", "i", "o":
+      output += lowerChar.uppercased()
+    case "e":
+      output += "EE"
+    case "u":
+      output += "UU"
+    default:
+      continue
+  }
+}
+print(output)
+
+
+// 99 Bottles
+var numBottles = 5
+while numBottles > 0 {
+  print("\(numBottles) bottles of milk on the wall, \(numBottles) bottles of milk!")
+  numBottles -= 1
+  print("You take one down and pass it around... \(numBottles) bottles of milk on the wall!")
+}
+print("0 Bottles left! OH GOD PanIC THE DARK ON AWAKENS!!! GO BUY MORE MILK NOW!")
+
