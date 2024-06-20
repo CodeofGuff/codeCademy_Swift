@@ -161,6 +161,7 @@ else {   // if not print this
 var alphabet: [Character] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var secretMessage: String = "ballsy"
 var message: [String.Element] = Array(secretMessage) // array() changes the print from "hello" to and array like "h", "e", "l", "l", "o"
+var transMessage = ""
 
 for i: Int in 0..<message.count {
     for j: Int in 0..<alphabet.count {
@@ -170,4 +171,11 @@ for i: Int in 0..<message.count {
         }
     }
 }
+for i in message {
+    transMessage.append(i)
+
+}
+
 print(message)
+print(secretMessage)
+print(transMessage)
