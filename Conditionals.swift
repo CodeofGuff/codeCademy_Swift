@@ -50,10 +50,11 @@ else {
 // Ternary Condition 
 // A ? B : C
 // A is the condition to check for ? B is the expression to use if the condition is true : C is the expression to use if the condition is false
-
 var windy: Bool = true
 windy ? print("ITS BLOWIN!!!") : print("It is not windy!")
-// if the same as 
+
+// is the same as 
+
 if windy {
     print("ITS BLOWIN!!!")
 }
@@ -69,9 +70,9 @@ else {
 // - An interval denotes a range used for checking whether a given value lies within that range 
 //  Range is indicated by 3 dots ( ... )
 // Cases can be compound meaning multiple values in a single case
-
 var secretIdentity: String = "Natasha Romanoff"
 var superheroName: String 
+
 // Normal if statement
 if secretIdentity == "Tony Stark" {
   superheroName = "Iron Man"
@@ -115,7 +116,6 @@ switch year {
     print("You're a time traveler!")
 }
 
-
 var episode: Int = 8
 var villain: String 
 switch episode {
@@ -157,7 +157,6 @@ switch planet {
 
 // where Clause
 var randomNumber: Int = Int.random(in: 0...10) // Generating and assiging a random Int(integer) using the .random() method to var randomNumber
-
 switch randomNumber {
   case let x where x % 2 == 0: // variable declaration, followed by a where clause and condition. When true, the code executes. 
     print("\(randomNumber) is even") // where condition checks if x can be divided by 2 
@@ -177,8 +176,6 @@ switch wholeNumber {
     print("Prime")
 
 }
-
-
 
 
 // Review

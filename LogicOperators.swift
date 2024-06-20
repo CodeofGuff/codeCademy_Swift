@@ -13,8 +13,6 @@
 // && or AND operator
 // evaluates two operands and returns a Boolean result. 
 // It returns true only when both operands are true and returns false when at least one operand is false.
-
-
 var time: Int = 1900
 var phoneInUse: Bool = true
 var brightness: Double
@@ -52,7 +50,6 @@ let a: Bool = true
 let b: Bool = false
 print(!a)
 print(!b)
-
 print(!(true && false)) // Prints: true as true && false == false
 
 var feelingWell = true
@@ -94,7 +91,6 @@ print(unlock)
 // Controling Order of Execution
 // Instead of relying on the compiler to set operator precedence, 
 // we can do so ourselves by wrapping a logical expression in parentheses, ()
-
 let bool1: Bool = (true || false) || false || false // will execute (true || false) first
 let bool2: Bool = !true || (false && false || true)
 let bool3: Bool = !(false && true) && (false || false)

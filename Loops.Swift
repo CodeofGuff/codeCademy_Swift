@@ -26,7 +26,6 @@ for i in stride(from: 3, to: 0, by: -1) {
 print("BEGIN!")
 
 
-
 // Iterating through Strings
 var quote: String = "our whole life is solving puzzles."
 for c: Character in quote {
@@ -44,7 +43,6 @@ for char: Character in funFact {
 }
 
 
-
 // Using Underscore OR _
 // used in place of a placeholder? a placeplaceholder?
 // we wouldn't use num or n because there is no num or n in our loop body.
@@ -52,7 +50,6 @@ for char: Character in funFact {
 for _ in 1...10 {
     print("I will be a developer/engineer")
 }
-
 
 
 // Continue 
@@ -68,14 +65,13 @@ for char: Character in challenge {
 }
 
 for num in 1...9 {
-  if num % 2 != 0{
+  if num % 2 != 0{ 
     continue
   }
   print(num)
 }
 print("Who do we appreciate?")
 print("YOU!")
-
 
 
 // Break
@@ -99,7 +95,6 @@ for counter in 1...15 {
 }
 
 
-
 // While Loops
 // iterates as long as the condition is true
 // good for situations where we don't know ho wlong we need to loop for
@@ -115,6 +110,8 @@ print(total)
 print(counter)
 print("You rolled you die a total of \(counter) times, to reach your total of: \(total)")
 
+
+// WHILE vs IF
 var guess = Int.random(in: 1...10)
 var magicNum = Int.random(in: 1...10)
 while guess != magicNum {
@@ -135,7 +132,6 @@ var magicNum = Int.random(in: 1...10)
 
 
 
-
 // Review
 // for-in loops are used to iterate over collection items like ranges and strings.
 // stride() creates a range that we can customize.
@@ -147,7 +143,6 @@ var magicNum = Int.random(in: 1...10)
 // Whale Talk 
 var input: String = "I hope I make it!"
 var output: String = ""
-
 for char: Character in input {
   let lowerChar: String = char.lowercased()
   switch lowerChar {
@@ -172,4 +167,21 @@ while numBottles > 0 {
   print("You take one down and pass it around... \(numBottles) bottles of milk on the wall!")
 }
 print("0 Bottles left! OH GOD PanIC THE DARK ON AWAKENS!!! GO BUY MORE MILK NOW!")
+
+
+// Fizz Buzz
+for counter in 1...100 {
+  if counter % 5 == 0 && counter % 3 == 0 {
+      print("FizzBuzz")
+  }
+  else if counter % 3 == 0 {
+    print("Fizz")
+  }
+  else if counter % 5 == 0 {
+      print("Buzz")
+  }
+  else {
+    print(counter)
+  }
+}
 

@@ -24,9 +24,7 @@
 
 let amount: Double = 18.50
 var tip: Double = amount * 0.23
-
 print("The tip amount will be:", tip, "and total will be:", tip + amount)
-
 
 var badTip: Double = tip
 badTip /= 2
@@ -39,23 +37,18 @@ goodTip = amount * 0.35
 print("Adjusted the tip to \(goodTip) for excellent service!")
 
 
-
-
 // Dog(Cat) Years Project 
 var catAge: Int = 4  // Maples age
 var earlyYears: Int = 21  // first 2 years count as 21
 var laterYears: Int = (catAge - 2) * 4 // each following year age
 var humanYears: Int = earlyYears + laterYears
-
 print("My name is Maple! Meow! I am \(humanYears) years old in human years.")
-
 
 
 // Quadratic Formula 
 var a: Double = 2.0
 var b: Double = 5.0
 var c: Double =  3.0
-
 var root1: (Double) = (b*b - 4*a*c)
 root1 = root1.squareRoot()
 root1 = -b + root1
@@ -64,7 +57,6 @@ root1 = root1 / (2 * a)
 var root2: Double = (-b - (b*b - 4*a*c).squareRoot()) / (2*a) // all root1 mods written inline
 
 print("Root 1 =", root1, " : ", "Root 2 =", root2)
-
 
 
 // Piggy Bank
