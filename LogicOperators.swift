@@ -100,7 +100,6 @@ print(bool3)
 
 
 
-
 // Review 
 // The logical && operator translates to AND and returns true only when both operands are true. It returns false in all other cases.
 // The logical || operator translates to OR and returns true when either operands are true. When both operands are false, the logical expression evaluates to false.
