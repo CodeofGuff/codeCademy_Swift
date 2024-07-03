@@ -254,7 +254,7 @@ print(currentGeneratorState)
 
 // Rock Paper Scissors
 
-func getUserChoice(userInput: String) -> String {
+func getUserChoice(userInput: String) -> String { // This func Determines what the user is inputing 
   if userInput == "rock" || userInput == "paper" || userInput == "scissors" {
     return userInput
   }
@@ -262,9 +262,8 @@ func getUserChoice(userInput: String) -> String {
     return "You can only enter rock, paper, or scissors. Try again."
   }
 }
-print(getUserChoice(userInput: "hello"))
 
-func getComputerChoice() -> String {
+func getComputerChoice() -> String { // The func determines what the computer picks!!!
   let randomNumber: Int = Int.random(in: 0...2)
   switch randomNumber {
     case 0:
@@ -277,9 +276,8 @@ func getComputerChoice() -> String {
       return "Something went wrong"
   }
 }
-print(getComputerChoice())
 
-func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
+func determineWinner(_ userChoice: String, _ compChoice: String) -> String { // This func allows us to select a winner based on the previous funcs picks
   var decision = "It's a tie"
   switch userChoice {
     case "rock":
@@ -309,7 +307,7 @@ func determineWinner(_ userChoice: String, _ compChoice: String) -> String {
   return decision
 }
 
-let userChoice = getUserChoice(userInput: "paper")
+let userChoice = getUserChoice(userInput: "paper") // These conts allow us to pass the previous funcs as arguments to determine a winner
 let compChoice = getComputerChoice()
 print("You threw \(userChoice)")
 print("The computer threw \(compChoice)")
