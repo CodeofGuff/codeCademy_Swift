@@ -3,6 +3,9 @@
 
 // Structures
 // Used to programmatically represent a real-life object in code
+// creates a new type
+// a blueprint.template for objects in our program
+// start with a struct and change to class if inheritance or reference type is needed
 // 
 struct Name {
     // Properties
