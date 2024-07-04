@@ -253,3 +253,58 @@ print(groundFinch.nestLocation)
 // Even without an init() method, structs come with a default memberwise initialization method that can assign values to declared properties inside a struct.
 // Structures can have methods that are functions accessible to their instances.
 // Structures are value types, any copied struct that has its properties altered will not affect the original structure from which it was copied.
+
+
+
+// Structured Gym Regimen
+// 1st structure keeps track of:
+// its name. what muscle groups it targets.
+// how many repetitions (reps) we should do in one go.
+// how many rounds of repetitions we should do (sets). How many total reps we’ll be doing.
+// 2nd structure to keep track of all the exercises: 
+// track the day of the week.
+// store the exercises we should do for a given day.
+// include a method to remind us of a given day’s workout regimen.
+struct Exercise {
+  var name: String
+  var muscleGroups: [String]
+  var reps: Int
+  var sets: Int
+  var totalReps: Int
+
+  init(name: String, muscleGroups: [String], reps: Int, sets: Int) {
+    self.name = name
+    self.muscleGroups = muscleGroups
+    self.reps = reps
+    self.sets = sets
+    self.totalReps = sets * reps
+  }
+}
+var pushUp: Exercise = Exercise(name: "Push up", muscleGroups: ["Triceps", "Chest", "Shoulders"], reps: 35, sets: 5)
+var squats = Exercise(name: "Squat", muscleGroups: ["Legs", "Glutes"], reps: 50, sets: 10)
+
+
+struct Regimen {
+  var dayOfWeek: String
+  var exercises: [Exercise]
+
+  init(dayOfWeek: String, exercises: [Exercise]) {
+    self.dayOfWeek = dayOfWeek
+    self.exercises = exercises
+  }
+
+  func printExercisePlan() {
+    print("Today is \(self.dayOfWeek) and the plan is to: ")
+    for exercise in self.exercises {
+      print("Do \(exercise.sets) sets of \(exercise.reps) \(exercise.name)s")
+      print("That's a total of \(exercise.totalReps) \(exercise.name)s")
+    }
+  }
+}
+var mondayRegimen: Regimen = Regimen(dayOfWeek: "Monday", exercises: [pushUp, squats])
+print(mondayRegimen.printExercisePlan())
+
+// Create additional Exercise instances.
+// Create additional Regimen instances.
+// Add a mutating method to the Regimen structure to add exercises.
+// Fix for Loop to display totals together
