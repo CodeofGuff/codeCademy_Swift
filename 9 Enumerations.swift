@@ -33,9 +33,7 @@ print("Hello \(bella)")
 // switch statements are common places for an enum
 // No need for a default at the end of the 'switch'/case either. 
 enum Pet {
-    case ruth
-    case meepa
-    case rusty
+    case ruth, meepa, rusty
 }
 let myPet = Pet.meepa
 switch myPet {
@@ -49,4 +47,88 @@ switch myPet {
 
 
 // iterating over Enum cases
+// utilize a protocol
+// protocols define a set of methods and properties that can be adopted by an enum
+
+// : CaseInterable protocol gives us access to the property allCases that returns an array of case values
+enum Season: CaseIterable {
+    case winter
+    case spring
+    case summer
+    case fall
+}
+for season in Season.allCases {
+    print(season)
+}
+
+
+// Defining raw values for enum cases
 // 
+enum Team: Int {
+    case alpha = 1 // defines the raw value for each following case as well
+    case bravo
+    case charlie
+    case delta
+}
+let team = Team.bravo
+print(team.rawValue) // Prints: 2
+print(Team.delta.rawValue) //Prints: 4
+
+enum Status: String {
+    case complete // if no raw value for string defined, defaults to case name
+    case pending
+    case rejected
+}
+let myStatus = Status.complete
+print(myStatus.rawValue) // Prints: complete
+
+
+// Using Associated values wtih enums
+// ability to store an associated value of any type attached to a case value
+// different then raw values as each case can have a different type of associated value or none
+enum Dessert {
+    case cake(flavor: String) // defining an associated value
+    case pie(slices: Int)
+    case brownie
+}
+let tonightsSpecial = Dessert.pie(slices: 2)
+let tomorrowsSpecial = Dessert.brownie
+switch tonightsSpecial {
+    case let .cake(cakeFlavor):
+        print("Time for \(cakeFlavor) cake!")
+    case let .pie(sliceCount):
+        print("\(sliceCount) slices of pie!")
+    case .brownie:
+        print("Decadent goodness.")
+}
+switch tomorrowsSpecial {
+    case let .cake(cakeFlavor):
+        print("Time for \(cakeFlavor) cake!")
+    case let .pie(sliceCount):
+        print("\(sliceCount) slices of pie!")
+    case .brownie:
+        print("Decadent goodness.")
+}
+
+enum Vehicle {
+    case truck(isFourWheelDrive: Bool)
+    case boat
+    case airplane
+}
+ 
+let myRide = Vehicle.truck(isFourWheelDrive: true)
+switch myRide {
+case let .truck(isFourWheelDrive): 
+    if isFourWheelDrive {
+        print("Let's go to the mountains")
+    } else {
+        print("Let's go to the store")
+    }
+case .boat:
+    print("Let's sail to Hawaii")
+case .airplane:
+    print("Let's fly to Peru")
+}
+
+
+// Implementing Methods in Enumerations
