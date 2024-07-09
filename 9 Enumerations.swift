@@ -20,6 +20,7 @@ enum DogBreed {
 
 
 // Updating an instance of an enum
+//
 enum DogBreed {
     case corgi, husky, shiba
 }
@@ -49,7 +50,6 @@ switch myPet {
 // iterating over Enum cases
 // utilize a protocol
 // protocols define a set of methods and properties that can be adopted by an enum
-
 // : CaseInterable protocol gives us access to the property allCases that returns an array of case values
 enum Season: CaseIterable {
     case winter
@@ -83,7 +83,7 @@ let myStatus = Status.complete
 print(myStatus.rawValue) // Prints: complete
 
 
-// Using Associated values wtih enums
+// Using Associated values with enums
 // ability to store an associated value of any type attached to a case value
 // different then raw values as each case can have a different type of associated value or none
 enum Dessert {
@@ -132,3 +132,94 @@ case .airplane:
 
 
 // Implementing Methods in Enumerations
+// can define an instance method inside of an enum
+// mutating method within an enum, mutating method changes the values of its intance when executed
+enum Season {
+    case winter, spring, summer, fall
+
+    mutating func changeSeason() {
+        switch self {
+            case .winter:
+                self = .spring
+            case .spring:
+                self = .summer
+            case .summer:
+                self = .fall
+            case .fall:
+                self = .winter
+        }
+    }
+}
+var currentSeason = Season.fall // declares the season to be fall
+currentSeason.changeSeason() // calls the change season func to the case of fall -> winter
+print(currentSeason)
+
+enum Vehicle {
+    case truck(isFourWheelDrive: Bool)
+    case boat
+    case airplane
+    
+    // mutating instance method here
+    mutating func goOffRoad() {
+      self = .truck(isFourWheelDrive: true)
+    }
+}
+var myRide = Vehicle.airplane
+myRide.goOffRoad()
+print(myRide)
+
+
+// Implementing a Computed Property in an Enumeration
+// computed property is a property that isn't directly stored 
+// but is instead derived from other stored properties of the enum
+// can return any type of value and doesn't need to be the same as the rawValue
+enum Patty: Int {
+    case single
+    case double
+    case triple
+    var pattyCountWithExtraPatty: Int {  // computed variable property
+        return self.rawValue + 1
+    }
+}
+let burger = Patty.triple.pattyCountWithExtraPatty
+print(burger)
+
+enum Vehicle {
+    case airplane
+    case boat
+    case truck(isFourWheelDrive: Bool)
+    var description: String {
+        switch self {
+        case .airplane:
+            return "This is an airplane"
+        case .boat:
+            return "This is a boat"
+        case let .truck(isFourWheelDrive):
+            return "This is a truck" + (isFourWheelDrive ? " with four wheel drive" : "")
+        }
+    }
+}
+let myRide = Vehicle.truck(isFourWheelDrive: true)
+print(myRide.description)
+
+
+// REVIEW 
+// What an enumeration is
+// How to use enumerations in a switch control flow
+// How to iterate over enumerations cases like a collection
+// Defining raw values in an enumeration
+// Explicitly and implicitly assigning raw values
+// Extracting raw values for cases
+// Initializing an instance with a raw value
+// All cases must have the same type of raw value
+// Defining associated values in an enumeration
+// Associated values can be differently typed for each case
+// All cases don’t need associated value
+// Implementing methods in enumerations
+// Use of mutating methods
+// Defining computed properties in enumerations
+// Enumerations are indeed first class citizens in Swift and can help you write clean, expressive code
+
+
+// Numero Uno Software Store
+// 
