@@ -158,5 +158,37 @@ func runProgram() {
 runProgram()
 
 
-// Nil-Coalexcing Operator 
-// 
+// Nil-Coalescing Operator ??
+// allows us to provide a default value if the optional is nil
+// syntax optionalVal ?? defaultVal, same type as the optional. 
+var userLocation: String? = "Home"
+let displayedLocation = userLocation ?? "Unknown"
+print(displayedLocation)
+//IF NIL 
+var secondUserLocation: String?
+var secondDisplayLocation = secondUserLocation ?? "Unknown"
+print(secondDisplayLocation)
+
+var favoriteFood: String?
+print(favoriteFood ?? "No Favorite Food")
+
+
+// Optional Chaining with ?
+// chaining properties and method calls on a var
+var studentGovernment = [
+    "president": "Shristi",
+    "treasurer": "Diego"
+]
+if let presidentsNameLength = studentGovernment["president"]?.count { // access president in studentGovernment and counts the chars. 
+  print("The president's name is \(presidentsNameLength) characters long")
+}
+if let vicePresidentNameLength = studentGovernment["vicePresident"]?.count {
+  print("The vice president's name is \(vicePresidentNameLength) characters long")
+} else {
+  print("There is no vice president")
+}
+
+
+// Optionals and Functions
+// optionals are types just like Arrays and String, we can use them in the signature of a function
+// usefull as there may not always be a good value to return
