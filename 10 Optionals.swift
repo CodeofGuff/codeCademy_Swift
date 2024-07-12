@@ -190,5 +190,5 @@ if let vicePresidentNameLength = studentGovernment["vicePresident"]?.count {
 
 
 // Optionals and Functions
-// optionals are types just like Arrays and String, we can use them in the signature of a function
+// optionals are types just like Array and String, we can use them in the signature of a function
 // usefull as there may not always be a good value to return
