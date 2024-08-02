@@ -13,9 +13,22 @@
 
 
 // REVIEW
-
-
-
+// The boundaries for access control are modules, source files, and structs.
+// Public is the most permissive and allows access between modules. (useful for SDKs and frameworks)
+// Internal is the default level and allows access anywhere within a module.
+// File private allows access within a source file.
+// Private can only be used within the scope of a struct. (least permissive)
+// Private properties are defined using the private syntax.
+// Memberwise initializers can’t access private properties, so you need to use default values, make them optional, or use the init method.
+// Private methods use the same syntax as private properties and can only be called within the scope of the struct that defines them.
+// Computed properties aren’t stored values, rather they are derived from other stored properties.
+// Can be read-only. (only have getter method)
+// Can set them, in which case you change the underlying properties from which they are derived.
+// Property observers are built in methods that get called when properties are set.
+// didSet gives us the old value.
+// willSet gives us the new value.
+// Properties can have a more restricted access level to set vs. get.
+// Type properties are defined independently from any particular instance of a structure.
 
 
 
@@ -51,7 +64,6 @@ struct SwiftBank {
     }
   }
 
-
   // Private Methods
   private func isValid(_ enteredPassword: String) -> Bool {
     enteredPassword == password
@@ -66,7 +78,6 @@ private func displayLowBalanceMessage() {
     print("Alert: Your balance is under $100 at: $\(balance)")
   
 }
-
   // Methods
   func displayBalance(usingPassword password: String) {
   isValid(password) ? print("Your current balance is $\(balance)") : print("Error: Invalid password")
