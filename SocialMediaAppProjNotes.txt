@@ -7,9 +7,11 @@ Next, you’ll learn how to build out Socialcademy, a robust, fully-featured soc
  In Socialcademy, users will be able to create accounts upload posts, and view and comment on posts from other users. 
  You’ll build many other features along the way as well!
 
+------------------------------------------------------------------------------------------------------------------------------
 
 Main Project in Xcode with Notes within the Code
 
+------------------------------------------------------------------------------------------------------------------------------
 
 Chap 1: Concurrency and Grand Central Dispatch
  What Concurrency is
@@ -19,13 +21,13 @@ Chap 1: Concurrency and Grand Central Dispatch
  Why NOT to Block the Main Thread
 
 
+------------------------------------------------------------------------------------------------------------------------------
 
 Concurrency is an apps ability to process more than one task at a time
  If the app process tasks concurrently, the tasks must be independent of each other
  Meaning the completetion of one task, is not dependent on another. 
  ie. mowing the lawn when its morning -> washing dishes -> Laundry -> mowing the lawn in the evening, neither tasks required the other being completed
  you can do whatever, as long as you stop doing one thing first
-
 
 Sequential Programming is when tasks ARE dependent on another being completed
  ie, Clean Dishes -> Dry Dishes, You must clean the dishes before drying them
@@ -42,6 +44,7 @@ Parallelism is the execution of multiple tasks at the same time. Here is how con
 
  Parallelism does not require Context Switching, because the app is capable of executing the next task on a different cpu core
 
+------------------------------------------------------------------------------------------------------------------------------
 
 Threading
  Every app begins on the Main Thread or Main Queue
@@ -59,19 +62,82 @@ Splitting of a program into two or more tasks that can run independently of one 
  Instead of using the main thread, which executes sequentially, you can create threads to execute the above tasks. 
  Takss 1 - 3 can be completed at the same time, but taks 4 must wait for all three of them to finish before starting
 
-
+------------------------------------------------------------------------------------------------------------------------------
 GCD is an older framework, but still need to know a basic understanding. Notes will be limited
-Disptach Queues 
 GCD seeks to provide the developer with ease for threading operations by using queues to manage tasks. 
 A queue is a structure that handles tasks in the first-in, first-out operational order. 
 Instead of having to manually manage individual threads, Swift developers can execute tasks through the queues.
 Let’s look at the different types of GCD queues.
 
-GCD queues are either serial or concurrent. By default, GCD queues are serial.
- - Serial Queues: Execute tasks sequentially.
- - Concurrent Queues: Execute tasks concurrently.
+  GCD queues are either serial or concurrent. By default, GCD queues are serial.
+   - Serial Queues: Execute tasks sequentially.
+   - Concurrent Queues: Execute tasks concurrently.
 
-GCD tasks can be executed using 1 of the 3 following queues:
- - Main Queue: Runs on the main thread and is a serial queue\
- - Global Queue(s): Concurrent queues shared by the entire system. There are different priorities: high, default, low, and background depending on how important the task is.\
- - Custom Queue(s): Custom queues that you can create that can be serial or concurrent.~
+  GCD tasks can be executed using 1 of the 3 following queues:
+   - Main Queue: Runs on the main thread and is a serial queue\
+   - Global Queue(s): Concurrent queues shared by the entire system. There are different priorities: high, default, low, and background depending on how important the task is.\
+   - Custom Queue(s): Custom queues that you can create that can be serial or concurrent.~
+------------------------------------------------------------------------------------------------------------------------------
+
+Main Queue 
+ It is important to not put tasks in the Main Queue that take a long time, like a network call that could take 10 seconds, 
+ and during that time the user can't do anything. 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Async Await 
+ The new Swift structured concurrency 
+ How to use the async and await keywords for calling asynchronous operations.
+The await keyword works like the try keyword. It will execute the asynchronous function and wait for the result. 
+The async keyword declares a function as a coroutine. 
+Coroutines are functions that may return normally with a value or may suspend themselves internally and return a continuation. 
+Asynchronous functions can return a value directly instead of calling a completion handler.
+
+We can define an asynchronous function and execute that function using the await keyword.
+ But, what if we want to execute multiple asynchronous functions in synchronous order, 
+ i.e. one after another?
+We can also create asynv variables that will store the returned value from the function call. 
+Making a varibale with the async keyword will call the asynchronous func instantly, but it will not block the thread
+so your code continues to exec
+
+func loadUserData() {
+    Task {
+        async let profileImageTask = userProfileImage()
+        async let profileNameTask = userProfileName()
+        async let profileAgeTask = userProfileAge()
+        let userData: (Image, String, Int) = await (profileImage, profileName, profileAge)
+    }
+}
+The await keyword is used with the array instead of with each variable assignment. 
+As soon as an async variable is declared, the function kicks off and starts making network calls. 
+In order to refer to an async variable, the await keyword must be used. 
+This means that multiple calls can be started right after each other and will run in parallel. 
+The code will only stop and wait once the await keyword is used.
+
+
+
+Actors and @MainActor
+Actors eliminate shared mutable state. 
+Actors can be thought of as a DispatchQueue, the data that queue protects and messages that can be run on the queue. 
+
+
+How to bridge Asynchronous and Synchronous functions:
+
+func downloadImage(completionHandler: @espcaing (_ image: UIImage?, _ error: Error?) -> Void) { }
+func downloadData() async throws -> UIImage {
+    return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<UIImage, Error>) in
+        downloadImage() { image, error in
+            if let image = image {
+                continuation.resume(returning: image)
+            } else {
+                continuation.resume(throwing: error!)
+            }
+        }
+    })
+}
+Continuations are objects that provide us with methods to resume the asynchronous task with an object or throw an error. 
+withCheckedThrowingContinuation(continuation:) is a function that takes in a closure where you can specify when 
+a completion handler has been executed and return the data.
+Now you can use the new downloadImageSwift55Style across you codebase to avoid using completion handlers.
+
+The @MainActor attribute is a globally unique actor who performs tasks on the main thread so you don’t perform UI updates on a background thread
