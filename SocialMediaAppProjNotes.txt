@@ -74,4 +74,4 @@ GCD queues are either serial or concurrent. By default, GCD queues are serial.
 GCD tasks can be executed using 1 of the 3 following queues:
  - Main Queue: Runs on the main thread and is a serial queue\
  - Global Queue(s): Concurrent queues shared by the entire system. There are different priorities: high, default, low, and background depending on how important the task is.\
- - Custom Queue(s): Custom queues that you can create that can be serial or concurrent.
+ - Custom Queue(s): Custom queues that you can create that can be serial or concurrent.~
