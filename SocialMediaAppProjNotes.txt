@@ -141,3 +141,8 @@ a completion handler has been executed and return the data.
 Now you can use the new downloadImageSwift55Style across you codebase to avoid using completion handlers.
 
 The @MainActor attribute is a globally unique actor who performs tasks on the main thread so you don’t perform UI updates on a background thread
+
+RandomUserGenerator App: 
+You built a working application to fetch JSON of randomly generated users. 
+You applied the @MainActor attribute to update your model on the main thread after obtaining random users asynchronously using async and await. 
+You retrieved JSON from the Random User Generator API using a URLSession.
