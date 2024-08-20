@@ -310,9 +310,20 @@ This custom initializer allows us to convert different keys into the desired Dat
 
 
 Conclusion
-
 Codable brings us a great amount of functionality to allow for a complete end-to-end solution for decoding and encoding data. 
 With the help of automatic conformance, both Decodable and Encodable offer straight out-of-the-box solutions to make our Swift structures full-fledged data models. 
 Coding Keys give us the ability to have modified versions of our properties so that we’re not always relying on the naming conventions provided by the API response. 
 This helps us build robust data models that can work with any type of API response rather than having to modify the API response itself. 
 We can even reimplement initializers to fully customize the properties of a data model.
+
+
+
+Unit Testing
+assesses a unit of code — in our case, a function. 
+A function that tests something in our codebase is called a unit test. 
+This unit test is responsible for testing for edge cases, such as:
+
+Calling a function by passing in an empty array as an argument.
+Making sure, overall, that the code works as expected.
+In the long run, test cases help us limit the number of bugs in an application.
+
