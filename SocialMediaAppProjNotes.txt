@@ -146,3 +146,173 @@ RandomUserGenerator App:
 You built a working application to fetch JSON of randomly generated users. 
 You applied the @MainActor attribute to update your model on the main thread after obtaining random users asynchronously using async and await. 
 You retrieved JSON from the Random User Generator API using a URLSession.
+
+
+
+
+Converting an API JSON Response into a Data Model
+
+Codable: 
+ - Codable is a protocol that enables a Swift structure to be encoded into JSON or decoded from JSON
+   - Combo of Encodable and Deconable protocols
+     - Encodable allows the Swift struct to encode into JSON when it comes to sending an API
+     - Decoable allows a JSON response to be decoded into a Swift struct
+
+struct Name: Codable {
+  var first: String
+  var last: String
+}
+
+Requierments for Codable: 
+ - Protocols must be types that also conform to Codable (most types already do)
+
+
+ Multiple Layers of nested models in JSON:
+ {
+  "name": {
+    "first": "Mickey",
+    "last": "Mouse",
+  },
+  "age": 10,
+  "location": {
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States"
+  }
+}
+
+Convert it into something Modular and simple to use that conforms to Codable: 
+
+struct Name: Codable {
+  var first: String
+  var last: String
+}
+
+struct Location: Codable {
+  var city: String,
+  var state: String,
+  var country: String
+}
+
+struct Student: Codable {
+  var name: Name, // Struct 1
+  var age: Int,
+  var location: Location // Struct 2
+}
+
+
+Using Coding Keys to decode properties:
+ - Transforming properties with different naming conventions to our own
+ - camelCase i the most commom, along with snake_case for most APIs, camelCase for Swift APIs
+ - Coding Keys allow us to have a different name for a property then the JSON. 
+
+ camelCase + snake_case: 
+ {
+  "age": 10,
+  "likes": "cartoons",
+  "location": {
+    "city_of_student": "Los Angeles",
+    "state": "California",
+    "country": "USA"
+  },
+  "name": {
+    "first_name": "Mickey",
+    "last_name": "Mouse"
+  }
+}
+
+Using Coding Keys + enums:
+struct Name: Codable {
+    var first: String
+    var last: String
+
+    enum CodingKeys: String, CodingKey { // 1
+    case first = "first_name"
+    case last = "last_name"
+    }
+}
+
+struct Location: Codable {
+    var city: String
+    var state: String
+    var country: String
+
+    enum CodingKeys: String, CodingKey {
+        case city = "city_of_student"
+        case state, country
+    }
+
+}
+
+struct Student: Codable {
+    var location: Location // 2
+    var age: Int
+    var faveTopic: String
+    var name: Name
+
+    enum CodingKeys: String, CodingKey {
+        case faveTopic: "likes" // 2
+        case age, location, name
+    }
+}
+
+Coding Keys can be declared in the form of an enumeration as shown above 
+which conforms to the CodingKey protocol and has a raw value of type String.
+We mapped snake_case to camelCase properties using enums, making it simpler and specific
+
+
+
+Converting JSON responses manually
+ - Sometimes the auto conformance of Codable will not meet our needs
+  - The data type in the API may be different then our Swift data model
+
+{
+  "movie_name": "Titanic",
+  "release_month": "12",
+  "release_day": "19",
+  "release_year": "1997"
+}
+the dates are not the Date type and divided into sub-parts
+We want a struct that has a relaseDate prop of the Date type, instead of 4, seperate strings
+
+struct Movie: Decodable { // 1
+    var name: String
+    var releaseDate: Date
+    
+    enum CodingKeys: String, CodingKey {
+        case movie = "movie_name"
+        case releaseMonth = "release_month"
+        case releaseDay = "release_day"
+        case releaseYear = "release_year"
+    }
+    init(from decoder: Decoder) throw {
+        //2
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try values.decode(String.self, forKey: .movie)
+        let releaseMonth = try values.decode(String.self, forKey: .releaseMonth)
+        let releaseDay = try values.decode(String.self, forKey: .releaseDay)
+        let releaseYear = try values.decode(String.self, forKey: .releaseYear)
+
+        // 3
+        let dateString = "\(releaseMonth)/\(releaseDay)/\(releaseYear)"
+        let dateFormatter - DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+        
+        releaseDate = dateFormatter.date(from: dateString) ?? Date()
+    }
+}
+
+We’re manually decoding JSON for the Movie structure, so it only conforms to Decodable. 
+Instead of relying on automatic decoding, we manually decode keys to build a composite object, 
+converting values into a Date object. The name property is directly assigned from the JSON, while 
+releaseDate is constructed by combining releaseMonth, releaseDay, and releaseYear. 
+This custom initializer allows us to convert different keys into the desired Date type in our data model.
+
+
+Conclusion
+
+Codable brings us a great amount of functionality to allow for a complete end-to-end solution for decoding and encoding data. 
+With the help of automatic conformance, both Decodable and Encodable offer straight out-of-the-box solutions to make our Swift structures full-fledged data models. 
+Coding Keys give us the ability to have modified versions of our properties so that we’re not always relying on the naming conventions provided by the API response. 
+This helps us build robust data models that can work with any type of API response rather than having to modify the API response itself. 
+We can even reimplement initializers to fully customize the properties of a data model.
