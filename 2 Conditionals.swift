@@ -102,6 +102,7 @@ print(superheroName)
 
 
 // Interval Matching
+// An interval denotes a range used for checking whether a given value lies within that range.
 var year: Int = 1943
 switch year {
   case 1701...1800:
@@ -129,6 +130,13 @@ switch episode {
     villain = ""
 }
 print(villain)
+// or
+switch episode {
+  case 1...3: villain = "Emperor Palpatine"
+  case 4...6: villain = "Darth Vader"
+  case 7...9: villain = "Kylo Ren"
+  default: villain = ""
+}
 
 
 // Compound Cases
@@ -167,6 +175,7 @@ switch randomNumber {
 }
 
 var wholeNumber = Int.random(in: 10...20)
+print(wholeNumber)
 switch wholeNumber {
   case let x where x % 2 == 0:
     print("Composite")
@@ -174,9 +183,19 @@ switch wholeNumber {
     print("Composite")
   default:
     print("Prime")
-
 }
 
+let number = 24
+switch number {
+  case let x where x % 5 == 0:
+    print("This number is a multiple of 5")
+  case let x where x % 6 == 0:
+    print("This number is a multiple of 2, 3 and 6")
+  case let x where x % 7 == 0:
+    print("This number is a multiple of 7")
+  default:
+    print("Not sure about this one")
+}
 
 // Review
 // An if statement consists of a condition and code block that executes when the condition is true
