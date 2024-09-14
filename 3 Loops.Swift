@@ -14,7 +14,7 @@ print("Why is 6 afraid of 7? Because ...")
 for i: Int in 7...9 {
     print(i)
 }
-// stride does not include the to: ele. 
+// stride: 
 for i: Int in stride(from: 0, to: 12, by: 2) {
     print(i)
 }
