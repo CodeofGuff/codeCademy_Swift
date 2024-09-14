@@ -69,8 +69,7 @@ print(total)
 
 
 // REVIEW 
-// An array is a list of ordered items.
-// var evenNumbers = [2, 4, 6, 8, 10]
+// An array is a list of ordered items.  - var evenNumbers = [2, 4, 6, 8, 10]
 // The first index in an array is 0.
 // The .count property that returns the size of an array.
 // Some of the methods that come with arrays:

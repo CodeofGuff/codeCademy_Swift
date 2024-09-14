@@ -101,6 +101,23 @@ print(nintendoExclusives)
 
 
 // REVIEW 
+// A set is an unordered collection of unique elements.
+// We have the option to initialize sets that are either empty or populated:
+// var emptySet = Set<Type>()
+// var populatedSet: Set = [Value1, Value2, Value3]
+// To add new elements to a set, use the built-in method, .insert(Value).
+// We can remove a single element from a set using .remove(Value) or we can remove all the values from a set with .removeAll():
+// If we want to check if a value exists within a set, we can use the method .contains(Value) .
+// A for-in loop can be used to iterate through all the values of a set:
+// We can use set operations to modify or create new sets based on the data in two different sets.
+// The .intersection() operation creates sets with values that overlap in two sets
+// The .union() operation combines all the values of two different sets
+// The operation .symmetricDifference() creates a set of items that appear in one set, but not both
+// .subtracting() is a set operation that removes the overlapping data of one set from another
+
+
+
+
 // School Roster
 var spanish101: Set = ["Angela", "Declan", "Aldany", "Alex", "Sonny", "Alif", "Skyla"]
 var german101: Set = ["Angela", "Alex", "Declan", "Kenny", "Cynara", "Adam"]
