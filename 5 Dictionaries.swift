@@ -103,9 +103,14 @@ else {
 }
 
 
-// Accessing Values
+// Accessing Values - with Optionals
 // subscript syntax with an if-let statement to check if it exists
 // This is also known as COnditional Unwrapping (BELOW)
+// if-let statements are used to check if a real value exists inside of an optional. 
+// If the value exists, the optional will be unwrapped and assigned to a variable.
+// Using ! forces the compiler to unwrap an optional value and interpret the value as 
+// its appropriate data type; 
+// however, it should be noted that errors can occur when using ! on a value that does not exist.
 var bagItems = [ 
     "Rope": 5,
     "Belt": 7,
@@ -215,6 +220,31 @@ if let giraffeSci = animalNames["Giraffe"] {
 
 
 // REVIEW 
+// A dictionary is an unordered collection of key-value pairs.
+// A key is a unique identifier used to create, update, remove, or access an associated value.
+// We can create populated dictionaries using dictionary literals:
+// var dictionaryName = [Key1: Value1, Key2: Value2]
+// An empty dictionary contains no key-values pairs. There are two methods of initializing an empty dictionary:
+// // Initializer Syntax:
+// var emptyInitializer = [KeyType: ValueType]()
+// // Dictionary Literal Syntax:
+// var emptyLiteral: [KeyType: ValueType] = [:]
+// We can add elements to a dictionary using subscript syntax:
+// We can remove dictionary elements using .removeValue() or by setting a key value to nil.
+// We can remove all the values from a dictionary with .removeAll().
+// We can update the value of a key-value pair using subscript syntax or .updateValue().
+// The .isEmpty property returns a boolean that equals true if a dictionary is empty.
+// The .count property returns the number of elements contained within a dictionary.
+// We can access a value using its key.
+// We can use for-in loops to iterate through the content of a dictionary.
+// We can use the .keys property to access only the keys of a dictionary.
+// We can use the .values property to access only the values of a dictionary.
+
+
+
+
+
+
 // Morse Decoder
 var englishText = "this is a secret message"
 var secretMessage = ".... --- .-- -.. -.--   .--. .- .-. - -. . .-."

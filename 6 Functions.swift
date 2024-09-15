@@ -148,7 +148,7 @@ let cuisine = favoriteCuisine()
 print("My fave \(cuisine.name) dish is \(cuisine.dish)")
 
 
-// Implicit Return - ONLY AVAIL in 5.1+
+// Implicit Return 
 // Aids in shortening the code within a func. Exisits in other langs. 
 // When theres only 1 expression or value in the body, we can omit 'return'
 // These are optional and only there for asthetic/short code
