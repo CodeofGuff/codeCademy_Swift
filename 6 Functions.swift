@@ -182,7 +182,7 @@ print(bookingTicket(seatClass: "Business", timeOfDeparture: 9))
 // Accepts zero or more values of a certain type
 // When you need to pass more then one value for a single parameter
 // a func can only have one Variadic Param at a time
-// funcName(name: Type...) , name type and 3 dots. 
+// funcName(name: Type...) , name type and 3 dots. Interpretted as an Array of a specific type
 func avgExchangeRate(numbers: Double...) -> Double { // varidiac param that accepts 0 or more values of a Double type. Interpreted as an array
   var total: Double = 0
   let numValues = Double(numbers.count)
@@ -219,7 +219,9 @@ func batteryInt(percentage: Int, batteryColor: inout String) {
     batteryColor = "green"
   }
 }
-batteryInt(percentage: 12, batteryColor: &currentColor) // an ampersand & must be used directly before the variable name that will act as the argument
+batteryInt(percentage: 12, batteryColor: &currentColor) 
+// an ampersand & must be used directly before the variable name that will act as the argument
+// instructs the program that that var can be modified
 print(currentColor)
 
 var currentGeneratorState = "Off"

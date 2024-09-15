@@ -182,42 +182,52 @@ print(order8.total)
 
 
 // POKEDEX
-class Pokemon {
-    var num = 0
-    var name = ""
-    var type = [""]
-    var ability = [""]
+// Add more properties to the Pokemon class
+// Add more methods to the Pokemon class
 
-    init(num: Int, name: String, type: [String], ability: [String]) {
-        self.num = num
-        self.name = name
-        self.type = type
-        self.ability = ability
-    }
-    func displayInfo() {
-        print("No.       #\(num)")
-        print("Name      \(name)")
-        print("Type      \(type)")
-        print("Abilities \(ability)")
-        print("===================================")
-    }
+class Pokemon {
+  var num = 0
+  var name = ""
+  var type = [""]
+  var ability = [""]
+
+  init(num: Int, name: String, type: [String], ability: [String]) {
+    self.num = num
+    self.name = name
+    self.type = type
+    self.ability = ability
+  }
+
+func displayInfo() {
+  print("Pokemon Information:")
+  print("Number:    \(num)")
+  print("Name:      \(name)")
+  print("Type:      \(type)")
+  print("Ability:   \(ability)")
+  print("************************")
 }
+
+}
+
 
 class GigantamaxPokemon: Pokemon {
-    var location = ""
-    init(num: Int, name: String, type: [String], ability: [String], location: String) {
-        self.location = location
-        super.init(num: num, name: name, type: type, ability: ability)
-    }
-    override func displayInfo() {
-        print("No.       #\(num)")
-        print("Name      \(name)")
-        print("Type      \(type)")
-        print("Abilities \(ability)")
-        print("Location  \(location)")
-        print("===================================")
-    }
+  var location = ""
+      //the new init() need to include the Superclasses init arams as well, but in supr.init() form
+  init(num: Int, name: String, type: [String], ability: [String], location: String) {
+    self.location = location
+    super.init(num: num, name: name, type: type, ability: ability)
+  }
+  override func displayInfo() {
+  print("Pokemon Information:")
+  print("Number:    \(num)")
+  print("Name:      \(name)")
+  print("Type:      \(type)")
+  print("Ability:   \(ability)")
+  print("Location:  \(location)")
+  print("************************")
 }
+}
+
 var charizard = GigantamaxPokemon(num: 6, name: "Charizard", type: ["Fire 🔥"], ability: ["Blaze"], location: "Lake of Outrage")
 var bulbasaur = Pokemon(num: 1, name: "Bulbasaur", type: ["Grass 🌱", "Poison 💀"], ability: ["Overgrow"])
 var charmander: Pokemon = Pokemon(num: 4, name: "Charmander", type: ["Fire 🔥"], ability: ["Blaze"])
@@ -225,10 +235,5 @@ var squirtle: Pokemon = Pokemon(num: 7, name: "Squirtle", type: ["Water 💧"], 
 
 bulbasaur.displayInfo()
 charmander.displayInfo()
-charizard.displayInfo()
 squirtle.displayInfo()
-
-
-// Add more properties to the Pokemon class
-// Add more methods to the Pokemon class
-// Add more Pokemons (instances)
+charizard.displayInfo()

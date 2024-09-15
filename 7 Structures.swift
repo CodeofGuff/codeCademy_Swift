@@ -63,6 +63,7 @@ print(eloise.isGood)
 // Methods are functions specific to a type (structure)
 // init()
 // doesnt need params but can take them
+// uses the self keyword to refer to itself
 struct Dog {
     var age: Int
     var isGood: Bool
@@ -285,7 +286,7 @@ struct Exercise {
 }
 var pushUp: Exercise = Exercise(name: "Push up", muscleGroups: ["Triceps", "Chest", "Shoulders"], reps: 35, sets: 5)
 var squats = Exercise(name: "Squat", muscleGroups: ["Legs", "Glutes"], reps: 50, sets: 10)
-
+var pullUp = Exercise(name: "Pull Up", muscleGroups: ["Biceps", "Back"], reps: 10, sets: 3)
 
 struct Regimen {
   var dayOfWeek: String
@@ -307,7 +308,6 @@ struct Regimen {
 var mondayRegimen: Regimen = Regimen(dayOfWeek: "Monday", exercises: [pushUp, squats])
 print(mondayRegimen.printExercisePlan())
 
-// Create additional Exercise instances.
-// Create additional Regimen instances.
+
 // Add a mutating method to the Regimen structure to add exercises.
 // Fix for Loop to display totals together
