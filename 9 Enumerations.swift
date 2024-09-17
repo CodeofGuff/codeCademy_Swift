@@ -1,5 +1,5 @@
 
-
+//***
 // Enumerations - enum 
 // A data type 
 // Swift extends their functionality offing capabilites only found in classes. 

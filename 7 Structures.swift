@@ -1,6 +1,6 @@
 
 
-
+//***
 // Structures
 // Used to programmatically represent a real-life object in code
 // creates a new type

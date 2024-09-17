@@ -1,8 +1,6 @@
 
-
+//***
 // Learning Swift Variables 
-
-
 
 // Data Types - 
 // Int: integer numbers

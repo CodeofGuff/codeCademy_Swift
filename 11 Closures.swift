@@ -1,6 +1,6 @@
 
 
-
+//***
 // Closures
 // self-contained chunks of code that are first-class citizens in Swift.
 // Meaning that can be assigned to variables and passed as arguments(params) to functions
